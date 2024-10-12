@@ -1,13 +1,13 @@
-package com.eccomerce.notification;
+package com.eccomerce.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class NotificationApplication {
+public class ApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(NotificationApplication.class, args);
+		SpringApplication.run(ApiApplication.class, args);
 	}
 
 }

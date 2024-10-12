@@ -1,0 +1,25 @@
+services:
+  application:
+    build: .
+    ports:
+      - 8080:8080
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  mysql:
+    image: mysql
+    environment:
+      MYSQL_DATABASE: eccomercedb # database name
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      TZ: Asia/Seoul
+    volumes:
+      - ./mysql:/var/lib/mysql
+    ports:
+      - 3306:3306
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping"]
+      interval: 5s
+      retries: 10

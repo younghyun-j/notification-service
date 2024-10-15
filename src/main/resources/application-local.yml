@@ -5,6 +5,8 @@ spring:
   sql:
     init:
       mode: always
+      data-locations:
+        - classpath:dummy.sql
   h2:
     console:
       enabled: true

@@ -1,6 +1,5 @@
-package com.eccomerce.api.notice.domain;
+package com.eccomerce.api.notification.productUserNotification.domain;
 
-import com.eccomerce.api.product.domain.Product;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -16,11 +15,18 @@ public class ProductUserNotification {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "productId")
-    private Product product;
+    private Long productId;
     private Long userId;
+    @Enumerated(EnumType.STRING)
     private UserRestockSubState userRestockSubState;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+
+    public ProductUserNotification(Long productId, Long userId, UserRestockSubState userRestockSubState) {
+        this.productId = productId;
+        this.userId = userId;
+        this.userRestockSubState = userRestockSubState;
+        this.createdAt = LocalDateTime.now();
+        this.updatedAt = LocalDateTime.now();
+    }
 }

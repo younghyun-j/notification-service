@@ -1,4 +1,4 @@
-package com.eccomerce.api.notice.domain;
+package com.eccomerce.api.notification.productNotification.domain;
 
 public enum RestockNotificationState {
     IN_PROGRESS,
